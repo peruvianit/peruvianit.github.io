@@ -1,0 +1,61 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/.vinext/
+/out/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dev.stdout.log
+dev.stderr.log
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+next-env.d.ts
+/dist/
+/.wrangler/
+/outputs/
+/work/
+
+# IDE
+/.idea/
+/.vscode/
+
+# Log e file temporanei locali
+*.log
+/.cache/
+/.tmp/
+*.tsbuildinfo
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+
+# Mantieni nel repository solo un eventuale esempio di configurazione
+!.env.example
