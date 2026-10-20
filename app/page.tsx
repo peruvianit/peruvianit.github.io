@@ -1,3 +1,5 @@
+import ContactForm from "./contact-form";
+
 const skills = [
   {
     number: "01",
@@ -51,7 +53,7 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Sergio Arellano, torna all'inizio">
           <img className="brand-avatar" src="/sergio-avatar.png" alt="Avatar di Sergio Arellano" />
-          <span className="brand-initials">SA<span>.</span></span>
+          <span className="brand-name">Sergio <em>Arellano</em></span>
         </a>
         <nav aria-label="Navigazione principale">
           <a href="#profilo">Profilo</a>
@@ -64,7 +66,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> Senior Software Engineer · Roma, Italia</p>
+          <p className="eyebrow"><span /> Senior Software Developer · Roma, Italia</p>
           <h1>
             25 anni tra codice,<br />
             <em>sistemi complessi</em><br />
@@ -136,8 +138,8 @@ export default function Home() {
           <p>Competenze costruite sul campo, attraverso sistemi reali e problemi che richiedono rigore, collaborazione e responsabilità.</p>
         </div>
         <div className="skills-grid">
-          {skills.map((skill) => (
-            <article className="skill-card" key={skill.number}>
+          {skills.map((skill, index) => (
+            <article className={`skill-card${index === 0 ? " is-active" : ""}`} key={skill.number}>
               <span className="skill-number">{skill.number}</span>
               <h3>{skill.title}</h3>
               <ul>{skill.items.map((item) => <li key={item}>{item}</li>)}</ul>
@@ -208,9 +210,13 @@ export default function Home() {
         <div className="footer-main">
           <div>
             <h2>Esperienza, metodo<br /><em>e visione tecnica.</em></h2>
-            <p>Un percorso costruito progettando sistemi enterprise affidabili, affrontando problemi complessi e condividendo soluzioni concrete.</p>
+            <p>Un percorso costruito progettando sistemi enterprise affidabili, affrontando problemi complessi.</p>
           </div>
-          <a className="contact-circle" href="mailto:sergioarellanodiaz@gmail.com"><span>Scrivimi</span><strong>↗</strong></a>
+          <ContactForm />
+          {/*
+          Legacy inline submit control removed in favor of ContactForm.
+            <button type="submit">Invia messaggio <strong>↗</strong></button>
+          */}
         </div>
         <div className="footer-bottom">
           <span>© 2026 Sergio Arellano</span>
