@@ -1,4 +1,5 @@
 import ContactForm from "./contact-form";
+import PixelCharacter from "./pixel-character";
 
 const skills = [
   {
@@ -50,6 +51,7 @@ const experiences = [
 export default function Home() {
   return (
     <main>
+      <PixelCharacter />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Sergio Arellano, torna all'inizio">
           <img className="brand-avatar" src="/sergio-avatar.png" alt="Avatar di Sergio Arellano" />
