@@ -1,16 +1,21 @@
 "use client";
 
-import { MouseEvent, ReactNode } from "react";
+import { AnchorHTMLAttributes, MouseEvent } from "react";
 
-type ScrollLinkProps = {
+type ScrollLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
   href: string;
-  className?: string;
-  children: ReactNode;
 };
 
-export default function ScrollLink({ href, className, children }: ScrollLinkProps) {
+export default function ScrollLink({ href, children, ...props }: ScrollLinkProps) {
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     if (!href.startsWith("#")) return;
+
+    if (href === "#top") {
+      event.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      window.history.replaceState(null, "", href);
+      return;
+    }
 
     const target = document.querySelector<HTMLElement>(href);
     if (!target) return;
@@ -20,5 +25,5 @@ export default function ScrollLink({ href, className, children }: ScrollLinkProp
     window.history.replaceState(null, "", href);
   }
 
-  return <a className={className} href={href} onClick={handleClick}>{children}</a>;
+  return <a {...props} href={href} onClick={handleClick}>{children}</a>;
 }

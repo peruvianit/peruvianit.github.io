@@ -53,17 +53,17 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Sergio Arellano, torna all'inizio">
+        <ScrollLink className="brand" href="#top" aria-label="Sergio Arellano, torna all'inizio">
           <img className="brand-avatar" src="/sergio-avatar.png" alt="Avatar di Sergio Arellano" />
           <span className="brand-name">Sergio <em>Arellano</em></span>
-        </a>
+        </ScrollLink>
         <nav aria-label="Navigazione principale">
-          <a href="#profilo">Profilo</a>
-          <a href="#competenze">Competenze</a>
-          <a href="#esperienza">Esperienza</a>
-          <a href="#contatti">Contatti</a>
+          <ScrollLink href="#profilo">Profilo</ScrollLink>
+          <ScrollLink href="#competenze">Competenze</ScrollLink>
+          <ScrollLink href="#esperienza">Esperienza</ScrollLink>
+          <ScrollLink href="#contatti">Contatti</ScrollLink>
         </nav>
-        <a className="header-cta" href="#contatti">Parliamone <span>↗</span></a>
+        <ScrollLink className="header-cta" href="#contatti">Parliamone <span>↗</span></ScrollLink>
       </header>
 
       <section className="hero" id="top">
@@ -227,7 +227,7 @@ export default function Home() {
             <a href="https://github.com/peruvianit" target="_blank" rel="noreferrer">GitHub ↗</a>
             <a href="https://www.linkedin.com/in/sergioarellanodiaz/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           </div>
-          <a href="#top">Torna su ↑</a>
+          <ScrollLink href="#top">Torna su ↑</ScrollLink>
         </div>
       </footer>
     </main>
