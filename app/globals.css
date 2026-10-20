@@ -51,8 +51,6 @@ h1 em { color: #6b9f00; letter-spacing: -.05em; }
   min-height: 620px;
   align-self: center;
   transform: translateY(-2vh);
-  isolation: isolate;
-  contain: layout paint;
 }
 .visual-kicker { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: max-content; margin: 0; padding: 8px 12px; border: 1px solid var(--line); background: rgba(242,240,233,.88); text-transform: uppercase; font: 600 9px var(--font-geist-mono); letter-spacing: .13em; z-index: 3; }
 .core { width: 168px; height: 168px; border-radius: 50%; background: var(--ink); color: white; position: absolute; left: 50%; top: 48%; transform: translate(-50%,-50%); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 24px 70px rgba(17,23,21,.22); z-index: 2; }
@@ -60,8 +58,8 @@ h1 em { color: #6b9f00; letter-spacing: -.05em; }
 .core small { font: 8px var(--font-geist-mono); letter-spacing: .18em; color: var(--acid); }
 .orbit { position: absolute; left: 50%; top: 48%; border: 1px solid rgba(17,23,21,.18); border-radius: 50%; transform: translate(-50%,-50%); }
 .orbit-one { width: 290px; height: 290px; }
-.orbit-two { width: 450px; height: 450px; border-style: dashed; animation: spin 70s linear infinite; }
-.satellite-ring { position: absolute; left: 50%; top: 48%; width: 0; height: 0; z-index: 3; animation: satellite-orbit var(--orbit-speed) linear infinite; }
+.orbit-two { width: 450px; height: 450px; border-style: dashed; animation: spin 70s linear infinite; animation-play-state: paused; }
+.satellite-ring { position: absolute; left: 50%; top: 48%; width: 0; height: 0; z-index: 3; animation: satellite-orbit var(--orbit-speed) linear infinite; animation-play-state: paused; }
 .satellite-ring-inner { --orbit-radius: 145px; --orbit-speed: 55s; }
 .satellite-ring-outer { --orbit-radius: 225px; --orbit-speed: 85s; animation-direction: reverse; }
 .satellite-slot { position: absolute; left: 0; top: 0; transform: rotate(var(--angle)) translateX(var(--orbit-radius)); }
@@ -70,8 +68,11 @@ h1 em { color: #6b9f00; letter-spacing: -.05em; }
 .satellite-slot-e { --angle: -150deg; }.satellite-slot-f { --angle: -90deg; }
 .satellite-slot-g { --angle: -30deg; }.satellite-slot-h { --angle: 30deg; }
 .satellite-slot-i { --angle: 90deg; }.satellite-slot-j { --angle: 150deg; }
-.node { position: absolute; left: 0; top: 0; transform: translate(-50%,-50%) rotate(calc(-1 * var(--angle))); animation: satellite-upright var(--orbit-speed) linear infinite; background: #fff; border: 1px solid var(--line); padding: 12px 15px; width: max-content; font: 600 11px var(--font-geist-mono); text-transform: uppercase; letter-spacing: .06em; box-shadow: 0 10px 35px rgba(17,23,21,.08); }
-.satellite-ring-outer .node { animation-direction: reverse; }
+.node { position: absolute; left: 0; top: 0; transform: translate(-50%,-50%) rotate(calc(-1 * var(--angle))); animation: satellite-upright-inner var(--orbit-speed) linear infinite; animation-play-state: paused; background: #fff; border: 1px solid var(--line); padding: 12px 15px; width: max-content; font: 600 11px var(--font-geist-mono); text-transform: uppercase; letter-spacing: .06em; box-shadow: 0 10px 35px rgba(17,23,21,.08); }
+.satellite-ring-outer .node { animation-name: satellite-upright-outer; }
+.hero-visual.is-visible .orbit-two,
+.hero-visual.is-visible .satellite-ring,
+.hero-visual.is-visible .node { animation-play-state: running; }
 .node span { color: #6b9f00; margin-right: 10px; }
 .node-small { padding: 10px 12px; font-size: 9px; }
 .hero-stats { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); margin-top: 7vh; }
@@ -159,9 +160,13 @@ footer { background: var(--ink); color: white; padding: 100px 5vw 35px; }
 
 @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
 @keyframes satellite-orbit { to { transform: rotate(360deg); } }
-@keyframes satellite-upright {
+@keyframes satellite-upright-inner {
   from { transform: translate(-50%,-50%) rotate(calc(-1 * var(--angle))); }
   to { transform: translate(-50%,-50%) rotate(calc(-1 * var(--angle) - 360deg)); }
+}
+@keyframes satellite-upright-outer {
+  from { transform: translate(-50%,-50%) rotate(calc(-1 * var(--angle))); }
+  to { transform: translate(-50%,-50%) rotate(calc(-1 * var(--angle) + 360deg)); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .orbit-two, .satellite-ring, .node { animation: none; } * { transition: none !important; } }
 

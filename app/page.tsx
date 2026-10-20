@@ -1,4 +1,5 @@
 import ContactForm from "./contact-form";
+import HeroVisualObserver from "./hero-visual-observer";
 
 const skills = [
   {
@@ -65,6 +66,7 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
+        <HeroVisualObserver />
         <div className="hero-copy">
           <p className="eyebrow"><span /> Senior Software Developer · Roma, Italia</p>
           <h1>
