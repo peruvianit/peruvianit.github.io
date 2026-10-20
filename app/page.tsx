@@ -1,5 +1,6 @@
 import ContactForm from "./contact-form";
 import HeroVisualObserver from "./hero-visual-observer";
+import ScrollLink from "./scroll-link";
 
 const skills = [
   {
@@ -80,7 +81,7 @@ export default function Home() {
             mission critical.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#progetto">Scopri il mio lavoro <span>↓</span></a>
+            <ScrollLink className="button button-primary" href="#progetto">Scopri il mio lavoro <span>↓</span></ScrollLink>
             <a className="button button-ghost" href="https://www.linkedin.com/in/sergioarellanodiaz/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
           </div>
         </div>
