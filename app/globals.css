@@ -10,7 +10,9 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* Lo scroll nativo evita che l'animazione di navigazione si sovrapponga
+   allo scroll manuale e renda la pagina poco reattiva. */
+html { scroll-behavior: auto; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-geist-sans), Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
 em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
@@ -44,7 +46,14 @@ h1 em { color: #6b9f00; letter-spacing: -.05em; }
 .button-primary span { color: var(--acid); }
 .button-ghost { min-width: 140px; }
 
-.hero-visual { position: relative; min-height: 620px; align-self: center; transform: translateY(-2vh); }
+.hero-visual {
+  position: relative;
+  min-height: 620px;
+  align-self: center;
+  transform: translateY(-2vh);
+  isolation: isolate;
+  contain: layout paint;
+}
 .visual-kicker { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: max-content; margin: 0; padding: 8px 12px; border: 1px solid var(--line); background: rgba(242,240,233,.88); text-transform: uppercase; font: 600 9px var(--font-geist-mono); letter-spacing: .13em; z-index: 3; }
 .core { width: 168px; height: 168px; border-radius: 50%; background: var(--ink); color: white; position: absolute; left: 50%; top: 48%; transform: translate(-50%,-50%); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 24px 70px rgba(17,23,21,.22); z-index: 2; }
 .core strong { font: 650 22px var(--font-geist-mono); letter-spacing: -.06em; margin: 9px 0; }
